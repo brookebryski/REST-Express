@@ -9,18 +9,22 @@ app.set('view engine', 'ejs')
 
 const comments = [
     {
+        id: 1,
         username: 'Brooke',
         comment: 'I love to travel!'
     },
     {
+        id: 2,
         username: 'Ashley',
         comment: 'Me too!'
     },
     {
+        id: 3,
         username: 'Bethany',
         comment: 'Me three!'
     },
     {
+        id: 4,
         username: 'Gio',
         comment: 'Same'
     }
@@ -38,6 +42,12 @@ app.post('/comments', (req, res) => {
     const { username, comment } = req.body;
     comments.push({ username, comment});
     res.redirect('/comments');
+})
+
+app.get('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(c => c.id === parseInt(id));
+    res.render('comments/show', { comment });
 })
 
 // Tacos initial example 
