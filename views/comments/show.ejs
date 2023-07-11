@@ -7,6 +7,7 @@
 </head>
 <body>
     <%= comment.username %> - <%= comment.comment  %>
-    
+    <a href="/comments">Back to All Comments</a>
+    <a href="/comments/<%= comment.id %>/edit">Edit Comment</a>
 </body>
 </html>
